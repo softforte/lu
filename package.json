@@ -1,21 +1,27 @@
 {
-  "name": "lu",
+  "name": "@softforte/lu",
   "description": "Simple .lu format validator based on @microsoft/bf-lu library",
   "version": "1.0.0",
   "author": "SoftForte, Inc.",
   "bin": {
     "lu": "./bin/run"
   },
-  "bugs": "https://github.com/Dev/lu/issues",
+  "bugs": {
+    "url": "https://github.com/Dev/lu/issues"
+  },
   "dependencies": {
     "@microsoft/bf-lu": "^4.10.1",
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^3",
-    "tslib": "^1"
+    "@types/uuid": "^8.3.0",
+    "axios": "^0.21.0",
+    "dotenv": "^8.2.0",
+    "tslib": "^1",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1",
+    "@oclif/dev-cli": "^1.22.2",
     "@types/node": "^10.17.42",
     "eslint": "^5.13",
     "eslint-config-oclif": "^3.1",
@@ -31,7 +37,7 @@
     "/bin",
     "/lib"
   ],
-  "homepage": "https://github.com/Dev/lu",
+  "homepage": "https://github.com/softforte/lu.git",
   "keywords": [
     "oclif"
   ],
@@ -40,12 +46,18 @@
   "oclif": {
     "bin": "lu"
   },
-  "repository": "Dev/lu",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/softforte/lu.git"
+  },
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc",
     "prepack": "rimraf lib && tsc -b && oclif-dev readme",
     "test": "echo NO TESTS",
     "version": "oclif-dev readme && git add README.md"
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  }
 }

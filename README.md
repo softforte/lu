@@ -15,11 +15,11 @@ Simple .lu format validator based on @microsoft/bf-lu library
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g lu
+$ npm install -g @softforte/lu
 $ lu COMMAND
 running command...
 $ lu (-v|--version|version)
-lu/1.0.0 win32-x64 node-v12.13.0
+@softforte/lu/1.0.0 win32-x64 node-v12.13.0
 $ lu --help [COMMAND]
 USAGE
   $ lu COMMAND
