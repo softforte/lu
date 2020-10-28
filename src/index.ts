@@ -112,7 +112,19 @@ class Lu extends Command {
           resolve(false);
         }
       } catch(err) {
-        this.log(`\r\nLUIS error: ${chalk.default.red((err as AxiosError).message)}\r\n`);
+        const error = err as AxiosError;
+        
+        if(!error) {
+          this.log(`\r\nLUIS error: ${chalk.default.red(JSON.stringify(err))}\r\n`);
+        } else {
+          this.log(
+            `\r\n${chalk.default.red('LUIS error:')}` +
+            `\r\n\tMessage: ${error.message}` +
+            `\r\n\tCode: ${error.code}` +
+            `\r\n\tResponse data: ${JSON.stringify(error.response?.data)}` +
+            `\r\n\tStatus: ${error.response?.status}` +
+            `\r\n\tStatus Text: ${error.response?.statusText}\r\n`);
+        }
         resolve(false);
       }
     });
