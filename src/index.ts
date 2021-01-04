@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {Command, flags} from '@oclif/command';
 import axios, {AxiosError, AxiosRequestConfig}  from 'axios';
 
-require('dotenv').config();
+require('dotenv').config({path: path.join(__dirname, '../.env')});
 const luisBuilder = require('@microsoft/bf-lu').V2.LuisBuilder;
 
 class Lu extends Command {
@@ -15,7 +15,7 @@ class Lu extends Command {
 
   static flags = {
     luis: flags.boolean({char: 'l', description: 'validates the ability to import parsed .lu file to a temporary LUIS application'}),
-    key: flags.string({char: 'k', description: 'LUIS resource subscription key, required when using --luis/-l option', helpValue: 'subscription_key'}),
+    key: flags.string({char: 'k', description: 'LUIS resource authoring key, required when using --luis/-l option', helpValue: 'authoring_key'}),
     out: flags.string({char: 'o', description: 'file path to save the generated JSON to', helpValue: 'file'}),
     version: flags.version({char: 'v'}),
     help: flags.help({char: 'h'}),
@@ -57,7 +57,7 @@ class Lu extends Command {
   }
 
   /**
-   * Conversts the .lu file to JSON and validates it using @microsoft/bf-lu library.
+   * Converts the .lu file to JSON and validates it using @microsoft/bf-lu library.
    * @param luContent - string representing contents of a LUDOWN  .lu file.
    * @returns - a promise with JSON representation of the .lu file.
    */
