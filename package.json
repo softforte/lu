@@ -1,7 +1,7 @@
 {
   "name": "@softforte/lu",
   "description": "Simple .lu format validator based on @microsoft/bf-lu library",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "SoftForte, Inc.",
   "bin": {
     "lu": "./bin/run"

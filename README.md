@@ -22,7 +22,7 @@ $lu <path to .lu file>
 ```
 Other times, even when the `@microsoft/bf-lu` validator is satisfied, the [LUIS](https://www.luis.ai/) service may not be. To make sure a valid LUIS application can be created from the given .lu file, use this command:
 ```sh-session
-$lu <path to .lu file> -l -k=<subscription key> 
+$lu <path to .lu file> -l -k=<authoring_key> 
 ```
 Upon completion of local validation it will connect to the LUIS service and attempt to create a temporary LUIS app using the contents of the `.lu` file. If creation of the temporary app succeeds then the app will be deleted automatically and validation will succeed. Otherwise, a detailed error message will be shown.
 
