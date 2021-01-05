@@ -12,6 +12,10 @@ Simple .lu format validator based on @microsoft/bf-lu library
 * [Introduction](#introduction)
 * [Installation](#installation)
 * [Configuration](#configuration)
+* [Base URL of LUIS REST API](#base-url-of-luis-rest-api)
+* [REST API command path to import a temporary application](#rest-api-command-path-to-import-a-temporary-application)
+* [REST API command path to delete a temporary application](#rest-api-command-path-to-delete-a-temporary-application)
+* [Prefix of temporary LUIS application name (the suffix is randomly generated)](#prefix-of-temporary-luis-application-name-the-suffix-is-randomly-generated)
 * [Usage](#usage)
 <!-- tocstop -->
 <!-- introduction -->
@@ -24,7 +28,7 @@ Other times, even when the `@microsoft/bf-lu` validator is satisfied, the [LUIS]
 ```sh-session
 $lu <path to .lu file> -l -k=<subscription key> 
 ```
-Upon completion of local validation it will connect to the LUIS service and attempt to create a temporary LUIS app using the contents of the .lu file. If creation of the temporary app succeeds then the app will be deleted automatically and validation will succeed. Otherwise, a detailed error message will be shown.
+Upon completion of local validation it will connect to the LUIS service and attempt to create a temporary LUIS app using the contents of the `.lu` file. If creation of the temporary app succeeds then the app will be deleted automatically and validation will succeed. Otherwise, a detailed error message will be shown.
 
 <!-- introductionstop -->
 # Installation
@@ -36,7 +40,7 @@ $ npm install -g @softforte/lu
 <!-- installationstop -->
 # Configuration
 <!-- configuration -->
-The following additional configuration is only needed if you intend to validate the .lu file against LUIS service. Default cofiguration values are stored in the `.env` file and look as follows:
+The following additional configuration is only needed if you intend to validate the `.lu` file against LUIS service. Default cofiguration values are stored in the `.env` file and look as follows:
 ```sh-session
 # Base URL of LUIS REST API
 LUIS_APP_BASE_URL=https://westus.api.cognitive.microsoft.com
@@ -50,25 +54,22 @@ LUIS_APP_PATH_DELETE=/luis/authoring/v3.0-preview/apps
 # Prefix of temporary LUIS application name (the suffix is randomly generated)
 LUIS_APP_NAME_PREFIX=tmp-lu-validation
 ```
-The `.env` file is located inside the root directory the `@softforte/lu` package resides in. For global installations (`-g` flag) on most systems this file would be under `/usr/local/lib/node_modules/@softforte/lu`. On Windows it would be in `%AppData%\npm\node_modules\@softforte\lu` directory.
+The `.env` file is located inside the root directory the `@softforte/lu` package resides in. For global installations (`-g` flag) on most systems this file would be under `/usr/local/lib/node_modules/@softforte/lu`. On Windows it would normally be in `%AppData%\npm\node_modules\@softforte\lu` directory. These values could also be set as environment variables, in which case they would take precedence over the contents of the `.env` file. For more information see [dotenv](https://github.com/motdotla/dotenv#readme) npm package documentation.
 
-Typically, you would only want to change the value of `LUIS_APP_BASE_URL` in there to match that of the `Endpoint` value on the `Keys and Endpoint` tab of the LUIS authoring resource in your Azure tenant.
+Typically you would only want to change the value of `LUIS_APP_BASE_URL` in there to match that of the `Endpoint` value on the `Keys and Endpoint` tab of the LUIS authoring resource in your Azure tenant.
 <!-- configurationstop -->
 # Usage
 <!-- usage -->
 ```sh-session
-$ lu [FILE]
-
-ARGUMENTS
-  FILE    <path to .lu file>
-
-OPTIONS
-  -h, --help                   show CLI help
-  -k, --key=authoring_key      LUIS authoring key required when using --luis/-l option
-  -l, --luis                   validates the ability to import parsed .lu file to a temporary LUIS application
-  -o, --out=file               file path to save the generated JSON to
-  -v, --version                show CLI version
-
+$ npm install -g @softforte/lu
+$ lu COMMAND
+running command...
+$ lu (-v|--version|version)
+@softforte/lu/1.0.2 win32-x64 node-v12.13.0
+$ lu --help [COMMAND]
+USAGE
+  $ lu COMMAND
+...
 ```
 LUIS [authoring key](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-azure-subscription) is used for connecting to the LUIS authornig resource via REST API. You can optionally save the JSON representation of the model to a file using the `-o` option with a path to persist the JSON to.
 <!-- usagestop -->
