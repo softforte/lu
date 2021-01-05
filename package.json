@@ -1,7 +1,7 @@
 {
   "name": "@softforte/lu",
   "description": "Simple .lu format validator based on @microsoft/bf-lu library",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "SoftForte, Inc.",
   "bin": {
     "lu": "./bin/run"
@@ -15,7 +15,7 @@
     "@oclif/config": "^1",
     "@oclif/plugin-help": "^3",
     "@types/uuid": "^8.3.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "tslib": "^1",
     "uuid": "^8.3.1"

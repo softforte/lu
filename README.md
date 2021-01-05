@@ -12,10 +12,6 @@ Simple .lu format validator based on @microsoft/bf-lu library
 * [Introduction](#introduction)
 * [Installation](#installation)
 * [Configuration](#configuration)
-* [Base URL of LUIS REST API](#base-url-of-luis-rest-api)
-* [REST API command path to import a temporary application](#rest-api-command-path-to-import-a-temporary-application)
-* [REST API command path to delete a temporary application](#rest-api-command-path-to-delete-a-temporary-application)
-* [Prefix of temporary LUIS application name (the suffix is randomly generated)](#prefix-of-temporary-luis-application-name-the-suffix-is-randomly-generated)
 * [Usage](#usage)
 <!-- tocstop -->
 <!-- introduction -->
@@ -61,15 +57,18 @@ Typically you would only want to change the value of `LUIS_APP_BASE_URL` in ther
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g @softforte/lu
-$ lu COMMAND
-running command...
-$ lu (-v|--version|version)
-@softforte/lu/1.0.2 win32-x64 node-v12.13.0
-$ lu --help [COMMAND]
-USAGE
-  $ lu COMMAND
-...
+$ lu [FILE]
+
+ARGUMENTS
+  FILE    <path to .lu file>
+
+OPTIONS
+  -h, --help                   show CLI help
+  -k, --key=authoring_key      LUIS authoring key required when using --luis/-l option
+  -l, --luis                   validates the ability to import parsed .lu file to a temporary LUIS application
+  -o, --out=file               file path to save the generated JSON to
+  -v, --version                show CLI version
+
 ```
 LUIS [authoring key](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-azure-subscription) is used for connecting to the LUIS authornig resource via REST API. You can optionally save the JSON representation of the model to a file using the `-o` option with a path to persist the JSON to.
 <!-- usagestop -->
