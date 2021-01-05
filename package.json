@@ -1,7 +1,7 @@
 {
   "name": "@softforte/lu",
   "description": "Simple .lu format validator based on @microsoft/bf-lu library",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "SoftForte, Inc.",
   "bin": {
     "lu": "./bin/run"
@@ -53,7 +53,7 @@
   },
   "scripts": {
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rimraf lib && tsc -b && oclif-dev readme",
+    "prepack": "rimraf lib && tsc -b",
     "test": "echo NO TESTS",
     "version": "oclif-dev readme && git add README.md"
   },
